@@ -340,6 +340,9 @@ class MainWindow(QMainWindow):
             self.recent_label.setStyleSheet("color: #ff4c4c;")
 
 if __name__ == "__main__":
+    import os
+    from PySide6.QtGui import QIcon
+
     app = QApplication(sys.argv)
     
     # Font de bază mărit puternic la nivelul întregii aplicații
@@ -348,6 +351,11 @@ if __name__ == "__main__":
     app.setFont(font)
     
     app.setStyleSheet(STIL_QSS)
+    
+    # Legăm noua iconiță mov personalizată (SVG)
+    icon_path = os.path.join(os.path.dirname(__file__), "icon.svg")
+    if os.path.exists(icon_path):
+        app.setWindowIcon(QIcon(icon_path))
     
     window = MainWindow()
     window.show()
